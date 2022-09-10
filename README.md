@@ -6,7 +6,7 @@ This application enables Django powered websites to have multiple tenants via Po
     CREATE DATABASE 'bbi_ecomm'
 
 
-### Basic Settings
+### Basic Settings for Development
 Activate environment
 
     python  -m venv  venv
@@ -106,6 +106,7 @@ For Checking before deploy
     pip install flake8
     flake8 martor_demo/ --max-line-length=127
 
+### Basic setting for deployment
 To run by using Docker 
     
     # Build Docker images
