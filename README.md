@@ -18,7 +18,7 @@ Install dependencies
 
 
 Basic Settings
-You’ll have to make the following modifications to your your .env file
+You’ll have to make the following creations to your your .env file
 and Django Secret Key
 
 
@@ -28,9 +28,7 @@ and Django Secret Key
 
     SECRET_KEY='your_secret_key'
 
-or to your bbi_ecomm/settings.py file
-
-Your DATABASE_ENGINE setting needs to be changed to
+Your DATABASE_ENGINE setting (bbi_ecomm/settings.py) needs to be changed to
 
     DATABASES = {
     'default': {
@@ -106,11 +104,41 @@ For Checking before deploy
     pip install flake8
     flake8 martor_demo/ --max-line-length=127
 
-### Basic setting for deployment
-To run by using Docker 
+
+### Setting for Production to Google Cloud Run with Google SQL and Google Storage
+Create environment file .env_prod in root folder with follow settings:
+
+
+    USE_CLOUD_SQL_AUTH_PROXY=True
+    GOOGLE_CLOUD_PROJECT=Your Project
+    GOOGLE_APPLICATION_CREDENTIALS=your credentail file
+
+Andc create another global enviroment .global_env_prod.sh
+
+    #!/bin/bash
+    export SECRET_KEY=your secret key
+    export DATABASE_URL=your database url 
+    export GS_BUCKET_NAME=your bucket name
+    export CLOUD_RUN_URL=your cloud run generated url
+
+
+Export Global Variable
+
+    source .global_env_prod.sh
+
+Change Project Settings pointer bbi_ecomm/wsgi.py and bbi_ecomm/asgi.py
+
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bbi_ecomm.settings_prod')
+
+
+    ### Basic setting for deployment
+    To run by using Docker 
     
     # Build Docker images
-    docker build . --network=host
+    docker build -t your_cloud_container_registry/your_container_name:your_version . --network=host
 
-    #R Run Docker container
+    # Run Docker container
     docker run -p 8000:8000 #image_id --network=host
+
+    # Push container to Cloud
+    gcloud docker -- push our_cloud_container_registry/your_container_name:your_version

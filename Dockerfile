@@ -10,7 +10,7 @@ RUN apk add --update --no-cache \
     postgresql-dev \
     gettext \
     jpeg-dev \
-    zlib-dev
+    zlib-dev 
 
 COPY requirements.txt .
 RUN pip wheel -r requirements.txt --disable-pip-version-check
@@ -33,9 +33,9 @@ RUN pip install \
 WORKDIR /app
 
 COPY . ./
-RUN python manage.py collectstatic --no-input
+# RUN python manage.py collectstatic --no-input
 
-ENV DJANGO_SETTINGS_MODULE='bbi_ecomm.settings'
+ENV DJANGO_SETTINGS_MODULE='bbi_ecomm.settings_prod'
 EXPOSE 8000
 
 CMD ["uvicorn", "--host", "0.0.0.0", "bbi_ecomm.asgi:application"]

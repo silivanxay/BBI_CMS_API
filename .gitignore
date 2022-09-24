@@ -1,5 +1,7 @@
 # Environments
 .env
+.env_prod
+.global_env_prod
 venv
 
 # ignore migration folder
@@ -13,3 +15,7 @@ __pycache__/
 
 # ignore media folder
 media/
+static/
+
+credential.json
+
