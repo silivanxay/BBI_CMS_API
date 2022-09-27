@@ -10,8 +10,6 @@ migrations/
 # ignore cache folder
 __pycache__/
 
-# ignore vscode setting
-.vscode/
 
 # ignore media folder
 media/
