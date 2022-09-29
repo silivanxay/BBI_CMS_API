@@ -46,6 +46,7 @@ SHARED_APPS = (
     'bbi_exchange',
     'rate',
     'common',
+    'stock',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -72,6 +73,7 @@ TENANT_APPS = [
     'product',
     'rate',
     'common',
+    'stock',
 
     # The following Django contrib apps must be in TENANT_APPS
     'django.contrib.contenttypes',
