@@ -1,11 +1,11 @@
 
 from django.db import models
 from product.models import Product
-from enum import Enum
+from enumchoicefield import ChoiceEnum, EnumChoiceField
 
 
 
-class Optiontype(Enum):
+class Optiontype(ChoiceEnum):
     Boolean = "True / False"
     Text = "Text"
     Integer = "Integer"
@@ -14,7 +14,7 @@ class Optiontype(Enum):
 
 class Option(models.Model):
     name = models.CharField(max_length=255, blank=True)
-    type = models.CharField(choices=[(tag.name, tag.value) for tag in Optiontype], max_length=10, default='Text', blank=True)
+    type = EnumChoiceField(Optiontype, default=Optiontype.Text)
     value = models.CharField(max_length=255, blank=True)
     required = models.BooleanField(blank=True)
 
