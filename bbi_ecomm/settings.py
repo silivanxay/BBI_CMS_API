@@ -47,6 +47,8 @@ SHARED_APPS = (
     'rate',
     'common',
     'stock',
+    'option',
+    'tryopyion',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -210,6 +212,8 @@ TENANT_DOMAIN_MODEL = "tenant.Domain"
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:6006",
+    "http://localhost:6007",
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -268,3 +272,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 THUMBNAIL_FORCE_OVERWRITE = True
+
+
+STOCK_MODELS = 'stock.models.Stock'
+OPTIONS_MODELS = 'option.models.Option'

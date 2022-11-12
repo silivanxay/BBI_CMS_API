@@ -15,12 +15,12 @@ class Audience(ChoiceEnum):
     Preview = "Preview"
     Archive = "Archive"
 
-
 class Product(TranslatableModel):
     translations = TranslatedFields(
         title=models.CharField(_("title"), max_length=200, db_index=True),
         description=models.TextField(_("Description"), blank=True),
     )
+    upc = models.CharField(max_length=255, unique=True, blank=True)
     slug = models.SlugField(max_length=100, unique=True,
                             db_index=True, blank=True)
     price = MoneyField(max_digits=14, decimal_places=2, default_currency='LAK')
