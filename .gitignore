@@ -1,7 +1,7 @@
 # Environments
 .env
 .env_prod
-.global_env_prod
+.global_env_prod.sh
 venv
 
 # ignore migration folder
