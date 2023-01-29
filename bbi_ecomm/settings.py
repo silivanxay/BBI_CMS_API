@@ -56,6 +56,9 @@ SHARED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    "django.contrib.postgres",
+    "psqlextra",
 
     'rest_framework',
     'drf_yasg',
@@ -144,7 +147,7 @@ WSGI_APPLICATION = 'bbi_ecomm.wsgi.application'
 DATABASES = {
         'default': {
             # Tenant Engine
-            'ENGINE': 'django_tenants.postgresql_backend',
+            'ENGINE': "psqlextra.backend",
             # set database name
             'NAME': os.getenv('DB_NAME'),
             # set your user details
@@ -159,6 +162,7 @@ DATABASE_ROUTERS = (
     'django_tenants.routers.TenantSyncRouter',
 )
 
+POSTGRES_EXTRA_DB_BACKEND_BASE = 'django_tenants.postgresql_backend'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

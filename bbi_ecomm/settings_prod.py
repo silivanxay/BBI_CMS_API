@@ -59,6 +59,9 @@ SHARED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    "django.contrib.postgres",
+    "psqlextra",
 
     'rest_framework',
     'drf_yasg',
@@ -147,7 +150,7 @@ WSGI_APPLICATION = 'bbi_ecomm.wsgi.application'
 # Database
 # Use django-environ to parse the connection string
 DATABASES = {"default": env.db()}
-DATABASES["default"]["ENGINE"] = 'django_tenants.postgresql_backend'
+DATABASES["default"]["ENGINE"] = "psqlextra.backend"
 
 # If the flag as been set, configure to use proxy
 if os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
@@ -157,6 +160,8 @@ if os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
 DATABASE_ROUTERS = (
     'django_tenants.routers.TenantSyncRouter',
 )
+
+POSTGRES_EXTRA_DB_BACKEND_BASE = 'django_tenants.postgresql_backend'
 
 
 # Password validation
